@@ -36,7 +36,7 @@ from matplotlib import colors
 import matplotlib.pyplot as plt
 from collections import namedtuple
 
-print('begin run...', '\n')
+print('begin run...\n')
 
 ### set ASC folder & parameterrs
 fileName = '0.5s_exposure/00066.asc' # specify ASC file
@@ -124,17 +124,17 @@ def visualiseIons(ionsFound):
 def plotColormaps(data, to_dir): 
     fig, (ax1, ax2, ax3) = plt.subplots(nrows=1, ncols=3)
     fig.tight_layout()
-    cmap = colors.ListedColormap(['black', 'red'])
+    cmap   = colors.ListedColormap(['black', 'red'])
     bounds = [0, 1, len(findIons(data)[1])+1] # black for 0s & red for 1s, ie black background w red ions;
-    norm = colors.BoundaryNorm(bounds, cmap.N)
+    norm   = colors.BoundaryNorm(bounds, cmap.N)
 
     originalData                     = np.loadtxt(data, usecols=range(1,px+1)) 
     ionsDenoised                     = findIons(data)[0]
     ionsDenoisedAndDarkCountsRemoved = findIons(data)[1] 
-    ionsDFound   = 'ions found = %d' % len(ionsDenoised)
-    ionsDnDFound = 'ions found = %d' % len(ionsDenoisedAndDarkCountsRemoved)
-    tempString1  = 'Ions found after denoising = ' + str(len(ionsDenoised))
-    tempString2  = 'Ions found after denoising & removing dark counts = ' + str(len(ionsDenoisedAndDarkCountsRemoved))
+    ionsDFound   = f'ions found = {len(ionsDenoised)}' 
+    ionsDnDFound = f'ions found = {len(ionsDenoisedAndDarkCountsRemoved)}'
+    tempString1  = f'Ions found after denoising = {str(len(ionsDenoised))}' 
+    tempString2  = f'Ions found after denoising & removing dark counts =  {str(len(ionsDenoisedAndDarkCountsRemoved))}' 
 
     ax1.set_aspect('equal')
     ax1.set_title('1 original')
@@ -152,7 +152,7 @@ def plotColormaps(data, to_dir):
 
     fig.savefig(f'{to_dir}/colormap', dpi=colormapDPI)
     plt.show()
-    return #print(tempString1, tempString2, sep='\n')
+    return print(tempString1, tempString2, sep='\n')
 
 ### export data to excels 
 def xportToExcel(data, to_dir):
@@ -190,4 +190,4 @@ print('getting positions of all ions... ',                    *ionLocations(file
 
 
 
-print('\n', '...finished!')
+print('\n...finished!')

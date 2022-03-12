@@ -36,7 +36,7 @@ from pathlib import Path
 import matplotlib.pyplot as plt
 from collections import namedtuple
 
-print('begin run...', '\n')
+print('begin run...\n')
 
 ### set ASC folder & parameterrs
 folderName = Path('0.5s_exposure') # specify ASC folder to be iterated
@@ -138,7 +138,7 @@ def ionFreqDist(files, to_dir):
     bins = [i for i in range(min_ions-1, max_ions+2, 1)]
     freq = [f.ion_count for f in files]
     mean, median = np.mean(freq), np.median(freq)
-    stats = 'ion stats: \n mean = %.2f , median = %.2f over %s files' % (mean, median, len(files))
+    stats = f'ion stats (ions): \n mean = {mean} , median = {median} over {len(files)} files' 
 
     plt.title('ion count frequency')
     plt.xlabel(stats) # plt.xlabel(stats, c='r', size='x-large')
@@ -158,7 +158,7 @@ def xportToExcel(files, to_dir):
 def getAvgIonCount(files):
     allIonCounts = [i.ion_count for i in files]
     averageIonCount = sum(allIonCounts) / len(allIonCounts)
-    return print('The average ion count is', averageIonCount)
+    return print(f'The average ion count is {averageIonCount}')
 
 ### return ion counts for all ASC files in specified folder // automation
 def getAllIonCounts(folderName):
@@ -173,7 +173,7 @@ def getAllIonCounts(folderName):
             file_name = file.name 
             originalData = np.loadtxt(file, usecols=range(1,px+1))
             ionsDenoisedAndDarkCountsRemoved = findIons(file)
-            ionsDnDFound = 'ions found = %d' % countIons(file)
+            ionsDnDFound = f'ions found = {countIons(file)}' # 'ions found = %d' % countIons(file)
             files.append(File(file_name, countIons(file), ionLocations(file))) 
 
             fig, (ax1, ax2) = plt.subplots(nrows=1, ncols=2)
@@ -190,7 +190,7 @@ def getAllIonCounts(folderName):
 
             file_name = file_name.split('.')[0]
             fig.savefig(f'autoSingleIonCounting/{file_name}', dpi=colormapDPI)
-            print('file', file_name, 'saved')
+            print(f'file {file_name} saved')
             plt.close(fig) 
 
     ionOverTime(files,newdir)   # plot ion count variation over time & save as png
@@ -210,4 +210,4 @@ getAllIonCounts(folderName)
 # print('time elapsed:', t2-t1, 's') 
 # # time elapsed: 4.694884777069092 s for 100 files (no colormaps)
 # # time elapsed: 39.17892241477966 s for 100 files (with colormaps)
-print('\n', '...finished!')
+print('\n...finished!')
