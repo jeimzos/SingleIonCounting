@@ -5,7 +5,7 @@
 
 <br> A repository containing the code(s) used in the Single Ion Counting proton radiobiology undergraduate research project. This is a comprehensive blob segmentation algorithm for the bulk analysis of fluorescence images. The algorithm not only automates the ion-counting process but also returns additional ion statistics. 
 
-For more information on the Single Ion Counting experiment, you may visit the [appendix](https://github.com/jeimzos/SingleIonCounting/APPENDIX.md) page. 
+For more information on the Single Ion Counting experiment, you may visit the [appendix](https://github.com/jeimzos/SingleIonCounting/blob/master/APPENDIX.md) page. 
 
 ## Getting Started
 
