@@ -38,13 +38,13 @@ from collections import namedtuple
 
 print('begin run...\n')
 
-### set ASC folder & parameterrs
-fileName = '0.5s_exposure/00066.asc' # specify ASC file
+### set ASC folder & parameters
+fileName = 'data/example_0319.asc' # specify ASC file (e.g 'data/0001.asc')
 maxCutoff = 300     # set max pixel value cut off to remove high-intensity noise
 nst = 80            # set noise threshold pixel value to remove background noise
 px = 256            # set ASC pixel resolution (default=256; ie 256 by 256)
 DCSize = 2          # set 'blob' size to reject (this accounts for dark current)
-t = 2               # set pixel threshold in pixels; input an intege
+t = 2               # set pixel threshold in pixels; input an integer
 
 colormapDPI = 1200  # default=100, publishing quality=1200 (uncomment fig.savefig in plotColormaps() to save colormaps in .png)
 Point = namedtuple('Point', 'x y')

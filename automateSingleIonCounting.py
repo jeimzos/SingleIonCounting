@@ -39,7 +39,7 @@ from collections import namedtuple
 print('begin run...\n')
 
 ### set ASC folder & parameterrs
-folderName = Path('0.5s_exposure') # specify ASC folder to be iterated
+folderName = Path('data') # add ASC files into 'data' folder to be iterated
 maxCutoff = 300     # set max pixel value cut off to remove high-intensity noise
 nst = 80            # set noise threshold pixel value to remove background noise
 px = 256            # set ASC pixel resolution (default=256; ie 256 by 256)
