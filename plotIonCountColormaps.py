@@ -60,11 +60,11 @@ def preProcess(data):
     return stringData, binariseData
 
 ### tell algo what an ion 'looks' like 
-def points_adjoin(p1, p2): 
+def ptsAdjoin(p1, p2): 
     return -t <= p1.x-p2.x <= t and -t <= p1.y-p2.y <= t # returns True if ANY points are adjacent, otherwise False 
 
 def adjoins(pts, pt): 
-    return any(points_adjoin(p, pt) for p in pts) # returns True if adjacent points are 1s, return False if adjacent points are 0s
+    return any(ptsAdjoin(p, pt) for p in pts) # returns True if adjacent points are 1s, return False if adjacent points are 0s
 
 ### locate all ions from ASC data // ion counting algorithm
 def findIons(data): 
